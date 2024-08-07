@@ -15,7 +15,7 @@ body {
     width: 100%; /* O container ocupará 100% da largura */
     height: 100%; /* O container ocupará 100% da altura */
     max-width: 1200px; /* Limite máximo de largura */
-    max-height: 800px; /* Limite máximo de altura, opcional */
+    max-height: 920px; /* Limite máximo de altura, opcional */
     padding: 10px; /* Ajuste do padding conforme necessário */
     background: white; /* Cor de fundo do container */
     border-radius: 5px; /* Bordas arredondadas */
@@ -28,6 +28,11 @@ body {
 h1 {
     text-align: center;
     color: #333;
+}
+
+p {
+    font-size: 17px;
+    color: #2d4275;
 }
 
 .table-container {
