@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <title>Formulário de Dados</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link para o arquivo CSS -->
 </head>
@@ -12,10 +13,8 @@
             <img src="img/voith.svg" alt="Voith">
         </h1>
         <div>
-            <tr>
-                <td class="fixed-column">Máquina:</td>
-                <td><input type="text" name="cm_ce"></td>
-            </tr>
+            <label for="maquina">Máquina:</label>
+            <input type="text" id="maquina" name="maquina" required>
         </div>
         <form id="dataForm">
             <div class="table-container">
@@ -282,6 +281,7 @@
         </form>
         <div id="responseMessage"></div>
     </div>
+    <script src="/src/script.js"></script>
 </body>
 </html>
 
