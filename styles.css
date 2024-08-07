@@ -79,7 +79,7 @@ button {
 }
 
 button:hover {
-    background-color: #091e64;
+    background-color: #0056b3;
 }
 
 
@@ -93,3 +93,37 @@ button:hover {
     }
 }
 
+
+.message-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    text-align: center;
+}
+
+.message-box p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.message-box button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #2d4275;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.message-box button:hover {
+    background-color: #0056b3;
+}
