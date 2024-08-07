@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Dados</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link para o arquivo CSS -->
+    <script>
+        function onSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = {};
+
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    // Enviar dados para o Google Apps Script
+    google.script.run.withSuccessHandler(function(response) {
+        document.getElementById('responseMessage').innerText = response; // Mostra a URL do PDF
+    }).withFailureHandler(function(error) {
+        document.getElementById('responseMessage').innerText = 'Erro ao gerar PDF.';
+        console.error('Error:', error);
+    }).generatePdf(data);
+}
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <img src="img/voith.svg" alt="Voith">
+        </h1>
+        <div>
+            <tr>
+                <td class="fixed-column">Máquina:</td>
+                <td><input type="text" name="cm_ce"></td>
+            </tr>
+        </div>
+        <form id="dataForm">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="fixed-column">Elemento (BASE)</th>
+                            <th>CM (g/m²)</th>
+                            <th>WW (%)</th>
+                            <th>Ret. (%)</th>
+                            <th>Peso Seco (g/m²)</th>
+                            <th>Consistência (%)</th>
+                            <th>Peso de Fibras Drenado (g/m²)</th>
+                            <th>Massa Total (g/m²)</th>
+                            <th>Quant. água retirada (g/m²)</th>
+                            <th>Quant. água retirada (l/min)</th>
+                            <th>Porcentual Drenado (%)</th>
+                            <th>Eficiência de Drenagem (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fixed-column">CE</td>
+                            <td><input type="number" name="cm_ce"></td>
+                            <td><input type="number" name="ww_ce"></td>
+                            <td><input type="number" name="ret_ce"></td>
+                            <td><input type="number" name="peso_seco_ce"></td>
+                            <td><input type="number" name="consistencia_ce"></td>
+                            <td><input type="number" name="peso_fibras_ce"></td>
+                            <td><input type="number" name="massa_total_ce"></td>
+                            <td><input type="number" name="agua_retirada_ce"></td>
+                            <td><input type="number" name="agua_retirada_lmin_ce"></td>
+                            <td><input type="number" name="porcentual_drenado_ce"></td>
+                            <td><input type="number" name="eficiencia_drenagem_ce"></td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">FB</td>
+                            <td><input type="number" name="cm_fb"></td>
+                            <td><input type="number" name="ww_fb"></td>
+                            <td><input type="number" name="ret_fb"></td>
+                            <td><input type="number" name="peso_seco_fb"></td>
+                            <td><input type="number" name="consistencia_fb"></td>
+                            <td><input type="number" name="peso_fibras_fb"></td>
+                            <td><input type="number" name="massa_total_fb"></td>
+                            <td><input type="number" name="agua_retirada_fb"></td>
+                            <td><input type="number" name="agua_retirada_lmin_fb"></td>
+                            <td><input type="number" name="porcentual_drenado_fb"></td>
+                            <td><input type="number" name="eficiencia_drenagem_fb"></td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">MF1</td>
+                            <td><input type="number" name="cm_mf1"></td>
+                            <td><input type="number" name="ww_mf1"></td>
+                            <td><input type="number" name="ret_mf1"></td>
+                            <td><input type="number" name="peso_seco_mf1"></td>
+                            <td><input type="number" name="consistencia_mf1"></td>
+                            <td><input type="number" name="peso_fibras_mf1"></td>
+                            <td><input type="number" name="massa_total_mf1"></td>
+                            <td><input type="number" name="agua_retirada_mf1"></td>
+                            <td><input type="number" name="agua_retirada_lmin_mf1"></td>
+                            <td><input type="number" name="porcentual_drenado_mf1"></td>
+                            <td><input type="number" name="eficiencia_drenagem_mf1"></td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">MF2</td>
+                            <td><input type="number" name="cm_mf2"></td>
+                            <td><input type="number" name="ww_mf2"></td>
+                            <td><input type="number" name="ret_mf2"></td>
+                            <td><input type="number" name="peso_seco_mf2"></td>
+                            <td><input type="number" name="consistencia_mf2"></td>
+                            <td><input type="number" name="peso_fibras_mf2"></td>
+                            <td><input type="number" name="massa_total_mf2"></td>
+                            <td><input type="number" name="agua_retirada_mf2"></td>
+                            <td><input type="number" name="agua_retirada_lmin_mf2"></td>
+                            <td><input type="number" name="porcentual_drenado_mf2"></td>
+                            <td><input type="number" name="eficiencia_drenagem_mf2"></td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">MF3</td>
+                            <td><input type="number" name="cm_mf3"></td>
+                            <td><input type="number" name="ww_mf3"></td>
+                            <td><input type="number" name="ret_mf3"></td>
+                            <td><input type="number" name="peso_seco_mf3"></td>
+                            <td><input type="number" name="consistencia_mf3"></td>
+                            <td><input type="number" name="peso_fibras_mf3"></td>
+                            <td><input type="number" name="massa_total_mf3"></td>
+                            <td><input type="number" name="agua_retirada_mf3"></td>
+                            <td><input type="number" name="agua_retirada_lmin_mf3"></td>
+                            <td><input type="number" name="porcentual_drenado_mf3"></td>
+                            <td><input type="number" name="eficiencia_drenagem_mf3"></td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">VF1</td>
+                            <td><input type="number" name="cm_vf1"></td>
+                            <td><input type="number" name="ww_vf1"></td>
+                            <td><input type="number" name="ret_vf1"></td>
+                            <td><input type="number" name="peso_seco_vf1"></td>
+                            <td><input type="number" name="consistencia_vf1"></td>
+                            <td><input type="number" name="peso_fibras_vf1"></td>
+                            <td><input type="number" name="massa_total_vf1"></td>
+                            <td><input type="number" name="agua_retirada_vf1"></td>
+                            <td><input type="number" name="agua_retirada_lmin_vf1"></td>
+                            <td><input type="number" name="porcentual_drenado_vf1"></td>
+                            <td><input type="number" name="eficiencia_drenagem_vf1"></td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">VF2</td>
+                            <td><input type="number" name="cm_vf2"></td>
+                            <td><input type="number" name="ww_vf2"></td>
+                            <td><input type="number" name="ret_vf2"></td>
+                            <td><input type="number" name="peso_seco_vf2"></td>
+                            <td><input type="number" name="consistencia_vf2"></td>
+                            <td><input type="number" name="peso_fibras_vf2"></td>
+                            <td><input type="number" name="massa_total_vf2"></td>
+                            <td><input type="number" name="agua_retirada_vf2"></td>
+                            <td><input type="number" name="agua_retirada_lmin_vf2"></td>
+                            <td><input type="number" name="porcentual_drenado_vf2"></td>
+                            <td><input type="number" name="eficiencia_drenagem_vf2"></td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">VF3</td>
+                            <td><input type="number" name="cm_vf3"></td>
+                            <td><input type="number" name="ww_vf3"></td>
+                            <td><input type="number" name="ret_vf3"></td>
+                            <td><input type="number" name="peso_seco_vf3"></td>
+                            <td><input type="number" name="consistencia_vf3"></td>
+                            <td><input type="number" name="peso_fibras_vf3"></td>
+                            <td><input type="number" name="massa_total_vf3"></td>
+                            <td><input type="number" name="agua_retirada_vf3"></td>
+                            <td><input type="number" name="agua_retirada_lmin_vf3"></td>
+                            <td><input type="number" name="porcentual_drenado_vf3"></td>
+                            <td><input type="number" name="eficiencia_drenagem_vf3"></td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">VF4</td>
+                            <td><input type="number" name="cm_vf4"></td>
+                            <td><input type="number" name="ww_vf4"></td>
+                            <td><input type="number" name="ret_vf4"></td>
+                            <td><input type="number" name="peso_seco_vf4"></td>
+                            <td><input type="number" name="consistencia_vf4"></td>
+                            <td><input type="number" name="peso_fibras_vf4"></td>
+                            <td><input type="number" name="massa_total_vf4"></td>
+                            <td><input type="number" name="agua_retirada_vf4"></td>
+                            <td><input type="number" name="agua_retirada_lmin_vf4"></td>
+                            <td><input type="number" name="porcentual_drenado_vf4"></td>
+                            <td><input type="number" name="eficiencia_drenagem_vf4"></td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">MV</td>
+                            <td><input type="number" name="cm_mv"></td>
+                            <td><input type="number" name="ww_mv"></td>
+                            <td><input type="number" name="ret_mv"></td>
+                            <td><input type="number" name="peso_seco_mv"></td>
+                            <td><input type="number" name="consistencia_mv"></td>
+                            <td><input type="number" name="peso_fibras_mv"></td>
+                            <td><input type="number" name="massa_total_mv"></td>
+                            <td><input type="number" name="agua_retirada_mv"></td>
+                            <td><input type="number" name="agua_retirada_lmin_mv"></td>
+                            <td><input type="number" name="porcentual_drenado_mv"></td>
+                            <td><input type="number" name="eficiencia_drenagem_mv"></td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">AV2 (antes ply)</td>
+                            <td><input type="number" name="cm_av2_antes"></td>
+                            <td><input type="number" name="ww_av2_antes"></td>
+                            <td><input type="number" name="ret_av2_antes"></td>
+                            <td><input type="number" name="peso_seco_av2_antes"></td>
+                            <td><input type="number" name="consistencia_av2_antes"></td>
+                            <td><input type="number" name="peso_fibras_av2_antes"></td>
+                            <td><input type="number" name="massa_total_av2_antes"></td>
+                            <td><input type="number" name="agua_retirada_av2_antes"></td>
+                            <td><input type="number" name="agua_retirada_lmin_av2_antes"></td>
+                            <td><input type="number" name="porcentual_drenado_av2_antes"></td>
+                            <td><input type="number" name="eficiencia_drenagem_av2_antes"></td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">AV2 (após ply)</td>
+                            <td><input type="number" name="cm_av2_depois"></td>
+                            <td><input type="number" name="ww_av2_depois"></td>
+                            <td><input type="number" name="ret_av2_depois"></td>
+                            <td><input type="number" name="peso_seco_av2_depois"></td>
+                            <td><input type="number" name="consistencia_av2_depois"></td>
+                            <td><input type="number" name="peso_fibras_av2_depois"></td>
+                            <td><input type="number" name="massa_total_av2_depois"></td>
+                            <td><input type="number" name="agua_retirada_av2_depois"></td>
+                            <td><input type="number" name="agua_retirada_lmin_av2_depois"></td>
+                            <td><input type="number" name="porcentual_drenado_av2_depois"></td>
+                            <td><input type="number" name="eficiencia_drenagem_av2_depois"></td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">Cx. Transf.</td>
+                            <td><input type="number" name="cm_cx_transf"></td>
+                            <td><input type="number" name="ww_cx_transf"></td>
+                            <td><input type="number" name="ret_cx_transf"></td>
+                            <td><input type="number" name="peso_seco_cx_transf"></td>
+                            <td><input type="number" name="consistencia_cx_transf"></td>
+                            <td><input type="number" name="peso_fibras_cx_transf"></td>
+                            <td><input type="number" name="massa_total_cx_transf"></td>
+                            <td><input type="number" name="agua_retirada_cx_transf"></td>
+                            <td><input type="number" name="agua_retirada_lmin_cx_transf"></td>
+                            <td><input type="number" name="porcentual_drenado_cx_transf"></td>
+                            <td><input type="number" name="eficiencia_drenagem_cx_transf"></td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">HF1-2</td>
+                            <td><input type="number" name="cm_hf1_2"></td>
+                            <td><input type="number" name="ww_hf1_2"></td>
+                            <td><input type="number" name="ret_hf1_2"></td>
+                            <td><input type="number" name="peso_seco_hf1_2"></td>
+                            <td><input type="number" name="consistencia_hf1_2"></td>
+                            <td><input type="number" name="peso_fibras_hf1_2"></td>
+                            <td><input type="number" name="massa_total_hf1_2"></td>
+                            <td><input type="number" name="agua_retirada_hf1_2"></td>
+                            <td><input type="number" name="agua_retirada_lmin_hf1_2"></td>
+                            <td><input type="number" name="porcentual_drenado_hf1_2"></td>
+                            <td><input type="number" name="eficiencia_drenagem_hf1_2"></td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">AV3</td>
+                            <td><input type="number" name="cm_av3"></td>
+                            <td><input type="number" name="ww_av3"></td>
+                            <td><input type="number" name="ret_av3"></td>
+                            <td><input type="number" name="peso_seco_av3"></td>
+                            <td><input type="number" name="consistencia_av3"></td>
+                            <td><input type="number" name="peso_fibras_av3"></td>
+                            <td><input type="number" name="massa_total_av3"></td>
+                            <td><input type="number" name="agua_retirada_av3"></td>
+                            <td><input type="number" name="agua_retirada_lmin_av3"></td>
+                            <td><input type="number" name="porcentual_drenado_av3"></td>
+                            <td><input type="number" name="eficiencia_drenagem_av3"></td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">AV4</td>
+                            <td><input type="number" name="cm_av4"></td>
+                            <td><input type="number" name="ww_av4"></td>
+                            <td><input type="number" name="ret_av4"></td>
+                            <td><input type="number" name="peso_seco_av4"></td>
+                            <td><input type="number" name="consistencia_av4"></td>
+                            <td><input type="number" name="peso_fibras_av4"></td>
+                            <td><input type="number" name="massa_total_av4"></td>
+                            <td><input type="number" name="agua_retirada_av4"></td>
+                            <td><input type="number" name="agua_retirada_lmin_av4"></td>
+                            <td><input type="number" name="porcentual_drenado_av4"></td>
+                            <td><input type="number" name="eficiencia_drenagem_av4"></td>
+                        </tr>
+                        <tr>
+                            <td class="fixed-column">Trivac</td>
+                            <td><input type="number" name="cm_trivac"></td>
+                            <td><input type="number" name="ww_trivac"></td>
+                            <td><input type="number" name="ret_trivac"></td>
+                            <td><input type="number" name="peso_seco_trivac"></td>
+                            <td><input type="number" name="consistencia_trivac"></td>
+                            <td><input type="number" name="peso_fibras_trivac"></td>
+                            <td><input type="number" name="massa_total_trivac"></td>
+                            <td><input type="number" name="agua_retirada_trivac"></td>
+                            <td><input type="number" name="agua_retirada_lmin_trivac"></td>
+                            <td><input type="number" name="porcentual_drenado_trivac"></td>
+                            <td><input type="number" name="eficiencia_drenagem_trivac"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+        <div id="responseMessage"></div>
+    </div>
+</body>
+</html>
+
