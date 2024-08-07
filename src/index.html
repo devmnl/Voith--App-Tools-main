@@ -5,25 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Dados</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link para o arquivo CSS -->
-    <script>
-        function onSubmit(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    const data = {};
-
-    formData.forEach((value, key) => {
-        data[key] = value;
-    });
-
-    // Enviar dados para o Google Apps Script
-    google.script.run.withSuccessHandler(function(response) {
-        document.getElementById('responseMessage').innerText = response; // Mostra a URL do PDF
-    }).withFailureHandler(function(error) {
-        document.getElementById('responseMessage').innerText = 'Erro ao gerar PDF.';
-        console.error('Error:', error);
-    }).generatePdf(data);
-}
-    </script>
 </head>
 <body>
     <div class="container">
